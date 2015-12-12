@@ -64,6 +64,7 @@
       <root url="file://$PROJECT_DIR$/../github.com/nsf/gocode/_gccgo" />
       <root url="file://$PROJECT_DIR$/../misc/.idea" />
       <root url="file://$PROJECT_DIR$/../golang.org/x/tools/go/ssa/interp/testdata" />
+      <root url="file://$PROJECT_DIR$/../ProfileService-Gin/.git" />
       <root url="file://$PROJECT_DIR$/../github.com/nsf/gocode/_goremote" />
       <root url="file://$PROJECT_DIR$/../github.com/nsf/gocode/_testing" />
       <root url="file://$PROJECT_DIR$/../golang.org/x/tools/go/loader/testdata" />

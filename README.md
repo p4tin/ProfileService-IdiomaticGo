@@ -5,7 +5,6 @@
 
 ###TODOS
 
-    1. Include the use of mongo instead of memory slice
-    2. N/A
+
     
 

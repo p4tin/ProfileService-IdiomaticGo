@@ -1,0 +1,191 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "ProfileService API"
+    },
+    "paths": {
+        "/v1/profile": {
+            "get": {
+                "description": "Gets All `Profile` objects from the Datastore.\nOptional query param of **size** determines\nsize of returned array\n",
+                "parameters": [
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Size of array",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/Profile"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Inserts a new record into the Profile Datastore\n",
+                "parameters": [
+                    {
+                        "name": "profile",
+                        "in": "body",
+                        "description": "Profile to add to the Datastore",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NewProfile"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful insert"
+                    }
+                }
+            },
+            "put": {
+                "description": "Updates a record in the Profile Datastore\n",
+                "parameters": [
+                    {
+                        "name": "profile",
+                        "in": "body",
+                        "description": "Profile to add to the Datastore",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateProfile"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful update"
+                    }
+                }
+            }
+        },
+        "/v1/profile/{id}": {
+            "get": {
+                "description": "Returns a profile based on a profileID",
+                "operationId": "find profile by id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of profile to fetch (id = Name)",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "profile response",
+                        "schema": {
+                            "$ref": "#/definitions/Profile"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "deletes a single profile based on the ID supplied",
+                "operationId": "DeletePr",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of profile to delete",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "profile deleted"
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Profile": {
+            "required": [
+                "Name",
+                "Password",
+                "Age",
+                "LastUpdated"
+            ],
+            "properties": {
+                "Name": {
+                    "type": "string"
+                },
+                "Password": {
+                    "type": "string"
+                },
+                "Age": {
+                    "type": "integer"
+                },
+                "LastUpdated": {
+                    "type": "number"
+                }
+            }
+        },
+        "NewProfile": {
+            "required": [
+                "Name",
+                "Password"
+            ],
+            "properties": {
+                "Name": {
+                    "type": "string"
+                },
+                "Password": {
+                    "type": "string"
+                },
+                "Age": {
+                    "type": "integer"
+                }
+            }
+        },
+        "UpdateProfile": {
+            "required": [
+                "Name"
+            ],
+            "properties": {
+                "Name": {
+                    "type": "string"
+                },
+                "Password": {
+                    "type": "string"
+                },
+                "Age": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Error": {
+            "required": [
+                "code"
+            ],
+            "properties": {
+                "code": {
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}
